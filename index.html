@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aperçu App PWA</title>
+
+  <!-- Balises PWA et Manifest -->
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#0f172a">
+
+  <!-- Support Apple / Safari -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="AppPWA">
+  <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background-color: #0f172a;
+      color: #f8fafc;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background-color: #1e293b;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #334155;
+    }
+    .logo { font-size: 1.25rem; font-weight: 700; color: #38bdf8; }
+    .header-actions { display: flex; align-items: center; gap: 1rem; }
+    .status {
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .status.online { background-color: #166534; color: #86efac; }
+    .status.offline { background-color: #991b1b; color: #fca5a5; }
+    #pwa-install-btn {
+      display: none;
+      background-color: #2563eb;
+      color: #ffffff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 0.375rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    #pwa-install-btn:hover { background-color: #1d4ed8; }
+    main {
+      flex: 1;
+      padding: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .card {
+      background-color: #1e293b;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      border: 1px solid #334155;
+    }
+    .card h3 { color: #38bdf8; margin-bottom: 0.5rem; }
+    .card p { color: #94a3b8; font-size: 0.95rem; line-height: 1.5; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">PWA Experience</div>
+    <div class="header-actions">
+      <span id="status-badge" class="status online">En ligne</span>
+      <button id="pwa-install-btn">Installer l'application</button>
+    </div>
+  </header>
+
+  <main>
+    <h1>Interface Application Web (Aperçu)</h1>
+    <p style="color: #94a3b8; margin-top: 0.5rem;">L'utilisateur explore le contenu complet de l'application directement dans le navigateur avant toute installation.</p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>1. Consultation immédiate</h3>
+        <p>L'application est pleinement fonctionnelle dès la première visite sur le navigateur web.</p>
+      </div>
+      <div class="card">
+        <h3>2. Mode Hors-Ligne</h3>
+        <p>Toutes les ressources visitées sont mises en cache par le Service Worker pour une utilisation sans réseau.</p>
+      </div>
+      <div class="card">
+        <h3>3. Installation sur Demande</h3>
+        <p>Le bouton d'installation s'affiche dans l'en-tête lorsque le navigateur confirme la compatibilité PWA.</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
